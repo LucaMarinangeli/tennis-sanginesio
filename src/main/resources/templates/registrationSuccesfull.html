@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
+	<title>Registrazione effettuata</title>
+	<link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+<body>
+
+	<div th:insert="fragments :: header"></div>
+	
+	<bodypage>
+		<h1>Ti sei registrato</h1>
+		<div class="booking-container">
+			<div class="booking-elem">
+				<span class="booking-elem-title">Nome: </span>
+				<span class="booking-elem-content" th:text="${user.name}"></span>
+			</div>
+			<div class="booking-elem">
+				<span class="booking-elem-title">Cognome: </span>
+				<span class="booking-elem-content" th:text="${user.surname}"></span>
+			</div>
+			<div class="booking-elem">
+				<span class="booking-elem-title">Telefono: </span>
+				<span class="booking-elem-content" th:text="${user.telephone}"></span>
+			</div>
+			<div class="booking-elem">
+				<span class="booking-elem-title">Email: </span>
+				<span class="booking-elem-content" th:text="${user.email}"></span>
+			</div>
+			<div class="booking-elem">
+				<span class="booking-elem-title">Username: </span>
+				<span class="booking-elem-content" th:text="${credentials.username}"></span>
+			</div>
+		</div>
+	
+	</bodypage>
+	
+	<div th:replace="fragments :: footer"></div>
+	
+	<div th:insert="fragments :: whatsapp"></div>
+	
+</body>
+
+</html>

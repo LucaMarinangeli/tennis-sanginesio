@@ -1,0 +1,58 @@
+<div class="header" th:fragment="header">
+		<div class = "header1">
+		    <span> <a href="/"> <img src="/images/logo.png" height="60px"/> </a> </span>
+			
+			<span class="block-title"><a href="/">A.S.D. Tennis San Ginesio</a></span>
+			
+			
+			<span>
+				
+				<span class="block-topright" th:if="${#request.userPrincipal}">
+					<span class="element-username">
+						<a href="/default/il-mio-profilo"><span th:text="${#request.userPrincipal.principal.username}"></span></a>
+					</span>
+					<span class="element-block-topright">
+						<a href="/logout">LOGOUT</a>
+					</span>
+				</span>
+			
+				<span class="block-topright" th:unless="${#request.userPrincipal}">
+					<span class="element-block-topright">
+						<a href="/login">LOGIN</a>
+					</span>
+					<span class="element-block-topright">
+						<a class = link-header1 href="/register">REGISTRATI</a>
+					</span>
+				</span>
+	
+			</span>
+			
+		</div>
+	
+	    <div class = "header2">
+	    	<span> <a class = link-header2 href="/">HOME               </a></span>
+	    	<span> <a class = link-header2 href="/galleria">GALLERIA                </a></span>
+	    	<span> <a class = link-header2 href="/default/prenota-un-campo">PRENOTA UN CAMPO         </a></span>
+	   	 	<span> <a class = link-header2 href="/default/le-mie-prenotazioni">LE MIE PRENOTAZIONI </a></span>
+       	</div>
+	</div>
+</div>
+
+<div class="footer" th:fragment="footer">
+	<div>Telefono: +39 1234567890</div>
+	<div>Email: asd.tennis.sanginesio@hotmail.it</div>
+	<div>Indirizzo: Viale del Tramonto, 62026, San Ginesio (MC)</div>
+	
+	<div class="block-link">
+			<span> <a href="https://www.google.com/maps/place/ASD+Tennis+San+Ginesio/data=!4m7!3m6!1s0x132de5925efb3069:0x2649898898df50f5!8m2!3d43.1088066!4d13.3141088!16s%2Fg%2F11h4khb7t9!19sChIJaTD7XpLlLRMR9VDfmIiJSSY?authuser=0&hl=it&rclk=1"><img src="/images/maps.png"      height="25px"/> </a></span>				
+			<span> <a href="https://www.instagram.com/asd_tennis_san_ginesio/">      <img src="/images/instagram.png" height="25px"/> </a></span>
+			<span> <a href="https://www.facebook.com/profile.php?id=100064533948939"><img src="/images/facebook.png"  height="25px"/> </a></span>				
+	</div>
+</div>
+
+<div class="whatsapp" th:fragment="whatsapp">
+	<a href="https://wa.me/3485202801"><img src="/images/whatsapp.png" height="40px"/></a>
+</div>
+
+
+

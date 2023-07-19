@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
+	<title>Prenotazioni</title>
+	<link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+	<div th:insert="fragments :: header"></div>
+	
+	<bodypage>
+		<h1>Le mie prenotazioni</h1>
+		<div class="booking-container" th:each="elem : ${list}">
+			
+			<div class="booking-elem">
+				<span class="booking-elem-title">DATA:</span>
+				<span class="booking-elem-content" th:text="' ' + ${elem[0].dayOfWeek} + ' ' + ${elem[0].dayOfMonth} + ' ' + ${elem[0].month} + ' ' 
+																+ ${elem[0].year} + ' | ' + ${elem[0].hour} + ':00 - ' + ${elem[0].hour + 1} + ':00'"></span>
+			</div>			
+			
+			<div class="booking-elem">
+				<span class="booking-elem-title">NOME E COGNOME:</span>
+				<span class="booking-elem-content" th:text="' '+${elem[1].user.name} + ' ' + ${elem[1].user.surname}"></span>
+			</div>
+			
+			<div class="booking-elem">
+				<span class="booking-elem-title">CAMPO:</span>
+				<span class="booking-elem-content" th:text="' '+${elem[1].court.name}"></span>
+			</div>
+			<div class="booking-elem"></div>
+			<div class="booking-elem">
+				<form th:action="@{'/default/rimuovi-prenotazione-da-lista/' + ${elem[1].id}}" method="POST">
+				<button class="remove-button-booking" type="submit" >x</button></form>
+			</div>
+		</div>
+	</bodypage>
+	
+	<div th:insert="fragments :: footer"></div>
+	
+	<div th:insert="fragments :: whatsapp"></div>
+	
+</body>
+</html>

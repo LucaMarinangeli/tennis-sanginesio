@@ -1,0 +1,38 @@
+<div class="header" th:fragment="header">
+		<div class = "header1">
+		    <span> <a href="/"> <img src="/images/logo.png" height="60px"/> </a> </span>
+			
+			<span class="block-title"><a href="/">A.S.D. Tennis San Ginesio</a></span>
+			
+			<span>
+				
+				<span class="block-topright" th:if="${#request.userPrincipal}">
+					<span class="element-admin">
+						<span th:text="${#request.userPrincipal.principal.username}"></span>
+					</span>
+					<span class="element-block-topright">
+						<a href="/logout">LOGOUT</a>
+					</span>
+				</span>
+			
+				<span class="block-topright" th:unless="${#request.userPrincipal}">
+					<span class="element-block-topright">
+						<a href="/login">LOGIN</a>
+					</span>
+					<span class="element-block-topright">
+						<a class = link-header1 href="/register">REGISTRATI</a>
+					</span>
+				</span>
+	
+			</span>
+			
+		</div>
+	
+	    <div class = "header2">
+			<span> <a class = link-header2 href="/">HOME               </a></span>
+	    	<span> <a class = link-header2 href="/admin/prenotazioni">PRENOTAZIONI</a></span>
+	    	<span> <a class = link-header2 href="/admin/utenti">UTENTI</a></span>
+
+       	</div>
+	</div>
+</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
+	<title>Aggiungi note</title>
+	<link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+<body>
+
+	<div th:insert="admin/admin-fragments :: header"></div>
+	
+	<bodypage>
+		<h1>Aggiungi note prenotazione alla prenotazione</h1>
+		
+		<div class="booking-container">	
+			<form th:action="@{'/admin/aggiungi-note/' + ${booking.id}}"  value="confirm" method="POST">
+				<div class="booking-elem">
+					 <span class="booking-elem-title">DATA:</span>   
+					 <span class="booking-elem-content" th:text="' ' + ${date.dayOfWeek} + ' ' + ${date.dayOfMonth} + ' ' + ${date.month} + ' ' + ${date.year} + ' | ' + ${date.hour} + ':00 - ' + ${date.hour + 1} + ':00'"></span>
+				</div>
+				
+				<div class="booking-elem">
+					<span class="booking-elem-title">NOME E COGNOME:</span>
+					<span class="booking-elem-content"><input type="text" placeholder="nome ospite" th:value="${guestName}" name="guestName" ></span>
+				</div>	
+				
+				<div class="booking-elem">
+					<span class="booking-elem-title">TELEFONO:</span>
+					<span class="booking-elem-content"><input type="text" placeholder="telefono" th:value="${guestTelephone}" name="guestTelephone" ></span>
+				</div>	
+				
+				<div class="booking-elem">
+					<span class="booking-elem-title">CAMPO:</span>   
+					<span class="booking-elem-content" th:text="' ' + ${booking.court.name}"></span>
+				</div>
+				
+				<button value="confirm" type="submit">Invia</button>
+			</form>
+		</div>	
+	</bodypage>
+	
+	<div th:insert="fragments :: footer"></div>
+		
+</body>
+
+</html>

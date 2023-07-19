@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
+	<title>Aggiungi note</title>
+	<link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+<body>
+
+	<div th:insert="fragments :: header"></div>
+	
+	<bodypage>
+		<h1>Inserisci la nuova email</h1>
+		
+		<div class="booking-container">	
+			<form th:action="@{'/default/nuova-email/' + ${credentials.user.id}}" method="POST">
+				
+				<div class="booking-elem">
+					<span class="booking-elem-title">NUOVA EMAIL:</span>
+					<span class="booking-elem-content"><input type="text" placeholder="email" th:value="${email}" name="email" required></span>
+				</div>	
+			
+				<button type="submit">Invia</button>
+			</form>
+		</div>	
+	</bodypage>
+	
+	<div th:insert="fragments :: footer"></div>
+	
+	<div th:insert="fragments :: whatsapp"></div>
+	
+</body>
+
+</html>

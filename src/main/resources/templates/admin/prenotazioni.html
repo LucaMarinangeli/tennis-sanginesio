@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
+	<title>Aggiungi prenotazione</title>
+	<link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+<body>
+
+	<div th:insert="admin/admin-fragments :: header"></div>
+	
+	<bodypage>
+		
+				<div class="list-hours" >
+					<div class="hour"th:each="hour : ${hoursList}">
+						<div class="bolded" th:if="${hour} != null" th:text="${hour} + ':00 '"></div>					
+					</div>
+				</div>
+				
+				<div class="list-days">
+					<div class="slot" th:each="dayName : ${daysList} ">
+						<div class="bolded" th:text="${dayName}"></div>
+					</div>
+				</div>
+				
+				
+				<div class="tabella">
+					<div class="colonna" th:each="day : ${week}">
+						<div th:each="slot : ${day}">
+					       
+					       	<div class="slot" th:if="${slot[0]} == null"></div>
+
+					        <div class="slot" th:if="${slot[0]} != null AND ${slot[1]} == null">
+								<form th:action="@{'/admin/crea-prenotazione/' + ${slot[0].year} + '/' + ${slot[0].monthValue} + '/' + ${slot[0].dayOfMonth} + '/' + ${slot[0].hour} +  '/1'}" method="POST"}>
+								<button class="calendar-button-green" type="submit"></button></form>
+							</div>
+	
+							<div class="slot" th:if="${slot[0]} != null AND ${slot[1]} != null AND ${slot[1].user.id} != 2">
+								<div class="slot-name">
+									<a th th:href="@{'/admin/profilo-utente/'+${slot[1].user.id}}">
+									<span class="bolded" th:text="${slot[1].user.name} + ' ' + ${slot[1].user.surname} + ' '" ></span></a>
+								</div>
+								<div class="slot-remove">
+									<span>
+										<form th:action="@{'/admin/rimuovi-prenotazione/' + ${slot[1].id}}" method="POST">
+										<button class="remove-button" type="submit">x</button></form>
+									</span>
+								</div>
+							</div>
+							
+									
+           					<div class="slot" th:if=" ${slot[0]} != null AND ${slot[1]} != null AND ${slot[1].user.id} == 2">
+								<div class="slot-name">
+									<span th:text="${slot[1].guestName}"  ></span>
+									<span th:text="'tel: ' + ${slot[1].guestTelephone}"></span>
+								</div>
+								<div class="slot-remove">
+									<span>
+										<form th:action="@{'/admin/rimuovi-prenotazione/' + ${slot[1].id}}" method="POST">
+										<button class="remove-button" type="submit" >x</button></form>
+									</span>
+								</div>
+							</div>
+													
+						</div>
+					</div>
+				</div>
+				
+			
+			
+	</bodypage>	
+	
+	<div th:replace="fragments :: footer"></div>
+		
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
+	<title>Registrati</title>
+	<link rel="stylesheet" href="/css/style.css"/>
+</head>
+	
+	<div th:insert="fragments :: header"></div>
+	
+	<bodypage>
+		
+			<form class="flex-form" th:action="@{/register}" method="POST">
+				
+				<h1>Registrati</h1>
+				
+				<div class="flex-form-container">
+					<input name="name" class="flex-form-input-minuscolo" type="text" placeholder="nome" pattern="[a-z ]+" title="deve contenere solo lettere minuscole e spazi" required th:field="${user.name}"/>
+				</div>
+				<div class="flex-form-container">
+					<input name="surname" class="flex-form-input-minuscolo" type="text" placeholder="cognome" pattern="[a-z ]+" title="deve contenere solo lettere minuscole e spazi"  required th:field="${user.surname}"/>
+				</div>
+				<div class="flex-form-container">
+					<input name="telephone" class="flex-form-input" type="tel" placeholder="telefono" pattern="[0-9]+" title="deve contenere solo numeri" required th:field="${user.telephone}" />
+				</div>
+				<div class="flex-form-container">
+					<input name="email" class="flex-form-input-minuscolo" type="email" placeholder="email" required th:field="${user.email}"/>
+				</div>
+				<div class="flex-form-container">
+					<input name="username" class="flex-form-input" type="text" placeholder="username" required th:field="${credentials.username}"/>
+				</div>
+				<div class="flex-form-container">
+					<input name="password" class="flex-form-input" type="password" placeholder="password" required th:field="${credentials.password}" />
+				</div>
+				<div>
+					<button class="form-flex-button" type="submit">invia</button></span>
+				</div>
+			</form>
+			
+	</bodypage>
+	
+	<div th:insert="fragments :: footer"></div>
+	
+	<div th:insert="fragments :: whatsapp"></div>
+
+</body>
+</html>
